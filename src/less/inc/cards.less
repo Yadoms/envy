@@ -1,0 +1,146 @@
+@import '../_vars.less';
+
+#cards {
+  @apply w-full;
+}
+
+.card {
+  @apply m-2 top-0 left-0 transform transition-card duration-150 rounded-lg p-1 inline-flex flex-col-reverse;
+
+  .card-title {
+    @apply mt-1 pt-1 p-2 font-bold text-xs h-8 truncate;
+
+    &.no-border {
+      @apply border-t-0;
+    }
+
+    .icon {
+      @apply float-right ml-1 pl-1;
+    }
+  }
+
+  .card-wrapper {
+    @apply flex-grow;
+
+    > div > div {
+      @apply w-full h-full overflow-hidden;
+    }
+  }
+
+  .cardSize(@size) {
+    .card-width-@{size} {
+      width: @size * @card_width + (@size - 1) * @card_spacingX;
+    }
+
+    .card-height-@{size} {
+      height: @size * @card_height + (@size - 1) * @card_spacingY;
+    }
+  }
+
+  .cardSize(1);
+  .cardSize(2);
+  .cardSize(3);
+  .cardSize(4);
+  .cardSize(5);
+
+  &#🤖 {
+    @apply opacity-100;
+    transition-duration: 0ms;
+  }
+
+  &.👻 {
+    @apply opacity-50;
+    z-index: 99;
+    transition-duration: 0ms;
+  }
+
+  &.🏄 {
+    @apply cursor-move;
+    &::before {
+      @apply inset-0 absolute z-50 opacity-25;
+      content: ' ';
+    }
+  }
+
+  &.📜 {
+    @apply z-10;
+  }
+
+  .📐 {
+    @apply hidden absolute w-4 h-4;
+    bottom: -1px;
+    right: -1px;
+    z-index: 99;
+    content: '';
+    cursor: se-resize;
+    border-top-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  .🗑️ {
+    @apply hidden absolute cursor-pointer;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 99;
+    &::before {
+      @apply block;
+      content: '🗑️';
+    }
+  }
+
+  &:hover {
+    z-index: 2;
+
+    .card-title:hover {
+      word-wrap: none;
+      overflow: visible;
+      text-overflow: none;
+      width: auto;
+    }
+
+    &.🏄 .📐,
+    &.🏄 .🗑️ {
+      @apply block;
+    }
+  }
+}
+
+#cards(@base_color, @front_color, @active_color, @primary_color, @highlight_color, @shadow_color, @text-shadow_color) {
+  .card {
+    border: 1px solid fadein(@active_color, 0.2);
+
+    box-shadow: -6px -6px 16px fadein(@front_color, 0.83),
+      6px 6px 16px fadein(@front_color, 0.51);
+
+    .card-title {
+      border-top: 1px solid darken(@front_color, 10);
+
+      .icon {
+        border-left: 1px solid darken(@front_color, 20);
+      }
+    }
+
+    &#🤖 {
+      border-color: @highlight_color;
+    }
+
+    &.🏄 {
+      &::before {
+        background-color: lighten(@base_color, 0.9);
+      }
+    }
+
+    .📐 {
+      background: linear-gradient(
+        135deg,
+        @base_color,
+        fadein(@active_color, 0.4),
+        fadein(@active_color, 0.2)
+      );
+    }
+
+    .🗑️ {
+      background-color: lighten(@base_color, 0.2);
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.swh(@font-size) {
+  @apply text-center;
+  width: @font-size + 0.25rem;
+  height: $width;
+  line-height: $width;
+}
+
+@font-face {
+  font-family: 'D7MMR';
+  src: url('/lib/DSEG/DSEG7-Modern-MINI/DSEG7ModernMini-Regular.woff')
+    format('woff');
+}
+
+.font-mono {
+  font-family: 'D7MMR' !important;
+  letter-spacing: 0.025em;
+}
+
+.mono-font {
+  &-xs {
+    .swh(0.75rem);
+  }
+
+  &-sm {
+    .swh(0.875rem);
+  }
+
+  & {
+    .swh(1rem);
+  }
+
+  &-lg {
+    .swh(1.125rem);
+  }
+
+  &-xl {
+    .swh(1.25rem);
+  }
+
+  &-2xl {
+    .swh(1.5rem);
+  }
+
+  &-3xl {
+    .swh(1.875rem);
+  }
+
+  &-4xl {
+    .swh(2.25rem);
+  }
+
+  &-5xl {
+    .swh(3rem);
+  }
+
+  &-6xl {
+    .swh(4rem);
+  }
+}

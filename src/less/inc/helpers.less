@@ -1,0 +1,44 @@
+.digital {
+  @apply relative overflow-hidden;
+
+  span {
+    &.hollow {
+      @apply absolute inset-0 opacity-12;
+    }
+  }
+}
+
+.joliePosition {
+  @apply flex items-center justify-center w-full h-full;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+:focus {
+  outline: none !important;
+}
+
+#helpers(@base_color, @front_color, @active_color, @primary_color, @highlight_color, @shadow_color, @text-shadow_color) {
+  .neumorphism {
+    border-color: darken(@base_color, 2%);
+    box-shadow: -@shadow_size -@shadow_size @shadow_size*2
+        lighten(@base_color, -2.5%),
+      @shadow_size @shadow_size @shadow_size*2 lighten(@base_color, 2.5%);
+
+    &.active {
+      background: linear-gradient(
+        145deg,
+        lighten(@base_color, 1.5%),
+        lighten(@base_color, -1.5%)
+      );
+    }
+  }
+}
